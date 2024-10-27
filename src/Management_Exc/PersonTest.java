@@ -41,7 +41,7 @@ class PersonTest {
         try {
             persons.add(new Manager("Jea", -25, 47500));
         } catch (IllegalArgumentException e) {
-            assertEquals(e.getMessage(), "Age must be non-negative.");
+            assertEquals(e.getMessage(), "Age must be non-negative");
         }
         assertEquals(persons.size(), 1);
     }
@@ -88,7 +88,7 @@ class PersonTest {
         try {
             Main.assignPM(persons, "Vince", "Jeshiel");
         } catch (ClassCastException e) {
-            assertEquals(e.getMessage(), "Jeshiel is not a manager");
+            assertEquals(e.getMessage(), "Jeshiel is not a Manager");
         }
     }
 
@@ -164,7 +164,7 @@ class PersonTest {
         try {
             Main.giveRaise(persons, "Felix", "Jeshiel", 2500);
         } catch (ClassCastException e) {
-            assertEquals(e.getMessage(), "Felix is not a manager");
+            assertEquals(e.getMessage(), "Felix is not a Manager");
         }
         Employee jeshiel = (Employee) persons.get(2);
         assertEquals(jeshiel.getSalary(), 35000);
@@ -186,7 +186,7 @@ class PersonTest {
         try {
             Main.giveRaise(persons, "Claire", "Felix", 2500);
         } catch (ClassCastException e) {
-            assertEquals(e.getMessage(), "Felix is not an employee");
+            assertEquals(e.getMessage(), "Felix is not an Employee");
         }
         Employee claire = (Employee) persons.get(4);
         assertEquals(claire.getSalary(), 52600);
@@ -208,7 +208,7 @@ class PersonTest {
         try {
             Main.giveRaise(persons, "Mary", "Jeshiel", -2500);
         } catch (IllegalArgumentException e) {
-            assertEquals(e.getMessage(), "Raise must be non-negative");
+            assertEquals(e.getMessage(), "Salary must be non-negative");
         }
         Employee mary = (Employee) persons.get(3);
         Employee jeshiel = (Employee) persons.get(2);
@@ -251,8 +251,8 @@ class PersonTest {
         persons.add(new Manager("Claire", 27, 52600));
         persons.add(new Customer("Felix", 52));
         assertDoesNotThrow(()->{
-           Main.customerSpeak(persons, "Felix", "Jeshiel");
-           Main.customerSpeak(persons, "Jewel", "Jea");
+            Main.customerSpeak(persons, "Felix", "Jeshiel");
+            Main.customerSpeak(persons, "Jewel", "Jea");
         });
 
         assertEquals(Main.customerSpeak(persons, "Felix", "Jeshiel"), "Oh, hello, Jeshiel. Can you assist me?");
@@ -278,12 +278,12 @@ class PersonTest {
         try {
             Main.customerSpeak(persons, "Mary", "Jeshiel");
         } catch (ClassCastException e) {
-            assertEquals(e.getMessage(), "Mary is not a customer");
+            assertEquals(e.getMessage(), "Mary is not a Customer");
         }
         try {
             Main.customerSpeak(persons, "Jewel", "Felix");
         } catch (ClassCastException e) {
-            assertEquals(e.getMessage(), "Felix is not an employee");
+            assertEquals(e.getMessage(), "Felix is not an Employee");
         }
     }
 

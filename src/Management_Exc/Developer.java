@@ -12,13 +12,11 @@ public class Developer extends Employee {
         return projectManager;
     }
 
-    /**
-     * TODO the implementation
-     * @param projectManager to be added as project manager
-     * @throws IllegalStateException when this developer already has a project manager
-     */
-    protected void setProjectManager(Manager projectManager) throws IllegalStateException{
-
+    protected void setProjectManager(Manager projectManager) throws IllegalStateException {
+        if (this.projectManager != null) {
+            throw new IllegalStateException(getName() + " already has a manager: " + this.projectManager.getName());
+        }
+        this.projectManager = projectManager;
     }
 
     public void removePM() {
@@ -29,7 +27,7 @@ public class Developer extends Employee {
     public void birthday() {
         super.birthday();
         if (projectManager != null) {
-            projectManager.giveRaise(this, this.getSalary()*0.05);
+            projectManager.giveRaise(this, this.getSalary() * 0.05);
         }
     }
 
